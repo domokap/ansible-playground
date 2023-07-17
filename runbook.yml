@@ -1,0 +1,13 @@
+---
+
+- name: Get vars
+  hosts: localhost
+  tasks: [ { include_vars: { file: "vars.yml" } } ]
+
+- name: "Ansible scratchbook"
+  hosts: localhost
+  tasks:
+
+  - debug:
+      msg: "{{ dict1 | json_query(item.key) }}"
+    loop: "{{ dict1 | dict2items }}"
